@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Plataforma.Models.Calificacione>
+
+@{
+    ViewBag.Title = "Calificaciones del Maestro";
+    var usuario = Session["usuario"] as usuario;
+}
+
+<section class="row" aria-labelledby="aspnetTitle">
+    <h1 id="title">Calificaciones del Maestro</h1>
+    <p class="lead">Aquí puedes ver todas las calificaciones para el maestro.</p>
+</section>
+
+<div class="container body-content">
+    @if (usuario != null)
+    {
+        if (string.IsNullOrEmpty(usuario.matricula))
+        {
+            <h2>Hola Maestro, @usuario.nombre @usuario.apellido</h2>
+
+            if (Model != null && Model.Any())
+            {
+                <table class="table" id="calificacionesTable">
+                    <thead>
+                        <tr>
+                            <th>Matricula</th>
+                            <th>Calificación</th>
+                            <th>Tarea</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Matricula</td>
+                                <td>@item.Calificacion</td>
+                                <td>@item.Tarea</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No se encontraron calificaciones.</p>
+            }
+        }
+        else
+        {
+            <h2>Hola Alumno, @usuario.nombre @usuario.apellido</h2>
+        }
+    }
+    else
+    {
+        <p>Usuario no autenticado.</p>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#calificacionesTable').DataTable();
+    });
+</script>

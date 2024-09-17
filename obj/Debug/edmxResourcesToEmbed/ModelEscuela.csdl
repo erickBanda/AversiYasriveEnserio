@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PruebaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="alumnoMateria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="materia_id" Type="Byte" />
+  </EntityType>
+  <EntityType Name="calificacione">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tarea_id" Type="Byte" />
+    <Property Name="matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="calificacion" Type="Int32" />
+  </EntityType>
+  <EntityType Name="materia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="materia1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dia_semana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hora_inicio" Type="Time" Precision="7" />
+    <Property Name="hora_fin" Type="Time" Precision="7" />
+    <Property Name="maestro_id" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tarea">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tarea1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_entrega" Type="DateTime" Precision="3" />
+    <Property Name="materia_id" Type="Byte" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estatus" Type="Byte" />
+  </EntityType>
+  <EntityContainer Name="PruebaEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="alumnoMaterias" EntityType="Self.alumnoMateria" />
+    <EntitySet Name="calificaciones" EntityType="Self.calificacione" />
+    <EntitySet Name="materias" EntityType="Self.materia" />
+    <EntitySet Name="tareas" EntityType="Self.tarea" />
+    <EntitySet Name="usuarios" EntityType="Self.usuario" />
+    <FunctionImport Name="pa_consultaUsuario" ReturnType="Collection(PruebaModel.pa_consultaUsuario_Result)">
+      <Parameter Name="usuario" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="pa_consultaUsuario_Result">
+    <Property Type="Int32" Name="Band" Nullable="true" />
+    <Property Type="String" Name="Mensaje" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

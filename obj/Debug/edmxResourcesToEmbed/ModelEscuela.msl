@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PruebaModelStoreContainer" CdmEntityContainer="PruebaEntities1">
+    <EntitySetMapping Name="alumnoMaterias">
+      <EntityTypeMapping TypeName="PruebaModel.alumnoMateria">
+        <MappingFragment StoreEntitySet="alumnoMateria">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="materia_id" ColumnName="materia_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="calificaciones">
+      <EntityTypeMapping TypeName="PruebaModel.calificacione">
+        <MappingFragment StoreEntitySet="calificaciones">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tarea_id" ColumnName="tarea_id" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="calificacion" ColumnName="calificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materias">
+      <EntityTypeMapping TypeName="PruebaModel.materia">
+        <MappingFragment StoreEntitySet="materias">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="materia1" ColumnName="materia" />
+          <ScalarProperty Name="dia_semana" ColumnName="dia_semana" />
+          <ScalarProperty Name="hora_inicio" ColumnName="hora_inicio" />
+          <ScalarProperty Name="hora_fin" ColumnName="hora_fin" />
+          <ScalarProperty Name="maestro_id" ColumnName="maestro_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tareas">
+      <EntityTypeMapping TypeName="PruebaModel.tarea">
+        <MappingFragment StoreEntitySet="tareas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tarea1" ColumnName="tarea" />
+          <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
+          <ScalarProperty Name="materia_id" ColumnName="materia_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="PruebaModel.usuario">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="usuario1" ColumnName="usuario" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="pa_consultaUsuario" FunctionName="PruebaModel.Store.pa_consultaUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PruebaModel.pa_consultaUsuario_Result">
+          <ScalarProperty Name="Band" ColumnName="Band" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

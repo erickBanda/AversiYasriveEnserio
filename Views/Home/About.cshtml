@@ -1,0 +1,36 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewBag.Title = "Calificaciones por Maestro";
+}
+
+<h2>Calificaciones por Maestro</h2>
+<p>Usuario ID: @ViewData["UsuarioID"]</p>
+<p>Calificaciones Count: @ViewData["CalificacionesCount"]</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Matricula</th>
+                <th>Calificación</th>
+                <th>Tarea</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var calificacion in Model)
+            {
+                <tr>
+                    <td>@calificacion.Matricula</td>
+                    <td>@calificacion.Calificacion</td>
+                    <td>@calificacion.Tarea</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay calificaciones disponibles.</p>
+}
